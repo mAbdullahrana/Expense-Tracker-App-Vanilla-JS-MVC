@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="/img/icon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module" defer src="/js/controller.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container container">
+        <div class="navbar__logo">
+          <img src="/img/logo.png" alt="" />
+        </div>
+        <div class="navbar__content">
+          <div class="navbar__message">
+            <p class="navbar__welcome">Log in to get Started</p>
+          </div>
+          <div class="navbar__login">
+            <div class="navbar__login-form">
+              <input
+                type="text"
+                placeholder="USER"
+                class="navbar__login-input navbar__login-input--user"
+              />
+              <input
+                type="text"
+                placeholder="PIN"
+                class="navbar__login-input navbar__login-input--pin"
+              />
+            </div>
+            <div class="navbar__login-form-button">
+              <button class="login__btn">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  
+
+    <!-- Main Content -->
+    <main class="app">
+        <!-- <div class="menu">
+      <aside class="side__menu-main">
+        <ul class="side__menu-main-list">
+          <li class="side__menu-main-item">
+            <a href="#dashboard" class="side__menu-main-link">Dashboard</a
+            ><i class="side__menu-icon fa-solid fa-table-columns"></i></i>
+          </li>
+          <li class="side__menu-main-item">
+            <a href="#incomes" class="side__menu-main-link">Add Incomes</a
+            ><i class="side__menu-icon fa-solid fa-arrow-right-long"></i>
+          </li>
+          <li class="side__menu-main-item">
+            <a href="#outcomes" class="side__menu-main-link">Add Outcomes</a
+            ><i class=" side__menu-icon fa-solid fa-arrow-left-long"></i></i>
+          </li>
+          <li class="side__menu-main-item">
+            <a href="#expenses" class="side__menu-main-link">Add New Expenses</a
+            ><i class=" side__menu-icon fa-solid fa-arrow-left-long"></i></i>
+          </li>
+          <li class="side__menu-main-item">
+            <a href="#operations" class="side__menu-main-link">Operations</a
+            ><i class=" side__menu-icon fa-solid fa-timeline"></i></i>
+          </li>
+        </ul>
+      </aside>
+
+      <aside class="side__menu-second">
+        <ul class="side__menu-second-list">
+          <li class="side__menu-second-item">
+            <a href="#logout" class="side__menu-second-link">log Out</a
+            ><i class="side__menu-icon fa-solid fa-arrow-right-from-bracket"></i>
+          </li>
+        </ul>
+      </aside>
+    </div> -->
+
+        <!-- <div class="summary">
+    <div class="balance">
+      <div>
+        <p class="balance__label">Total balance</p>
+      </div>
+      <p class="balance__value">10,000<span class="currency"> RS</span></p>
+    </div> -->
+
+        <!-- Expenses -->
+        <!-- <div class="overview">
+     <div class="box expenses">
+      <div class="expenses__logo">
+        <a href=""><i class="summary__icon fa-solid fa-arrow-left-long"></i></a>
+        </div>
+        <div class="expenses__detail">
+          <p class="expenses__detail-title">Expenses</p>
+          <p class="expenses__detail-value">5000 <span class="currency">RS</span></p>
+        </div>
+      </div> -->
+
+        <!-- Incomings -->
+        <!-- <div class="box income">
+      <div class="income__logo">
+        <a href=""><i class="summary__icon fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      <div class="income__detail">
+      <p class="income__detail-title">Incomes</p>
+      <p class="income__value">1000 <span class="currency">RS</span></p>
+    </div>
+    </div> -->
+
+        <!-- savings -->
+        <!-- <div class="box saving">
+      <div class="saving__logo">
+        <a href=""><i class="summary__icon fa-solid fa-piggy-bank"></i></a>
+        </div>
+      <div class="saving__detail">
+      <p class="saving__detail-title">Savings</p>
+      <p class="saving__value">1000 <span class="currency">RS</span></p>
+    </div>
+    </div> -->
+
+        <!-- Credits -->
+        <!-- <div class="box credit">
+      <div class="credit__logo">
+        <a href=""><i class="summary__icon fa-solid fa-credit-card"></i></a>
+        </div>
+      <div class="credit__detail">
+      <p class="credit__detail-title">Credits</p>
+      <p class="credit__value">1000 <span class="currency">Rs</span></p>
+    </div>
+    </div>
+ 
+  </div>
+</div> -->
+
+        <!-- <div class="operations__history">
+    <div class="movements">
+      <h2 class="operation__heading">Operations History</h2>
+      <hr>
+      <div class="movements__row">
+        <div class="movements__type movements__type--deposit">2 deposit</div>
+        <div class="movements__operation-reason">For buying balls</div>
+        <div class="movements__value">4 000 <span class="currency">RS</span></div>
+      </div>
+      <div class="movements__row">
+        <div class="movements__type movements__type--withdrawal">
+          1 withdrawal
+        </div>
+        <div class="movements__operation-reason">For buying nets</div>
+        <div class="movements__value">-378 <span class="currency">RS</span></div>
+      </div>
+      <div class="movements__row">
+        <div class="movements__type movements__type--withdrawal">
+          1 withdrawal
+        </div>
+        <div class="movements__operation-reason">For buying nets</div>
+        <div class="movements__value">-378 <span class="currency">RS</span></div>
+      </div>
+    </div>
+  </div>  -->
+    </main>
+
+      <!-- Sign up Form -->
+      <div class="signup">
+        <div class="signup__container">
+          <div class="signup__content">
+            <div class="signup__title">
+              <h2 class="signup__heading">Simplify Your Finances</h2>
+              <p class="signup__subheading">
+                Join thousands who are taking control of their finances.
+              </p>
+            </div>
+            <div class="signup__form">
+              <div class="signup__form signup__form-input">
+                <label for="name" class="signup__form-label--name"
+                  >Full name*</label
+                >
+                <input
+                  type="text"
+                  class="signup__form-input--name"
+                  placeholder="Enter Your Full Name"
+                  required
+                />
+                <label for="name" class="signup__form-label--password"
+                  >Choose a pin</label
+                >
+                <input
+                  type="password"
+                  class="signup__form-input--password"
+                  placeholder="pin"
+                  required
+                />
+              </div>
+              <div class="signup__form-submit-buttons">
+                <button class="signup__form-submit-button" type="submit">
+                  Sign In
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+  </body>
+</html>
