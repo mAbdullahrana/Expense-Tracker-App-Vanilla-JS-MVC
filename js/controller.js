@@ -13,6 +13,7 @@ const controlUserLogin = function (user, pin) {
   }
 };
 const init = function () {
+  signupView.render(model.state.account);
   signupView.addHandlerUserSignUp(controlUserSignUp);
   loginView.addHandlerUserLogin(controlUserLogin);
 };

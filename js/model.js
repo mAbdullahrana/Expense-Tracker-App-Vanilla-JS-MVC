@@ -3,6 +3,7 @@ export const state = {
     owner: '',
     movements: [450, -200, 600, -1000, 700, 900],
     pin: '',
+    credits: [],
   },
 };
 
@@ -12,27 +13,34 @@ export const createNewAccount = function (userName, pin) {
   localStoreData();
 };
 
-export const userTotalBalance = function () {
+export const loginUser = function (userName, pin) {
+  return state.account.owner === userName && state.account.pin === pin
+    ? true
+    : false;
+};
+
+const userTotalBalance = function () {
   state.account.totalBalance = state.account.movements.reduce(
     (acc, num) => acc + num,
     0
   );
 };
 
-export const userIncomes = function () {
+const userIncomes = function () {
   state.account.incomes = state.account.movements
     .filter(num => num > 0)
     .reduce((acc, num) => acc + num);
 };
-export const userExpenses = function () {
+
+const userExpenses = function () {
   state.account.expenses = state.account.movements
     .filter(num => num < 0)
     .reduce((acc, num) => acc + num);
 };
-export const loginUser = function (userName, pin) {
-  return state.account.owner === userName && state.account.pin === pin
-    ? true
-    : false;
+
+const userSavings = function () {
+  state.account.savings =
+    state.account.incomes - Math.abs(state.account.expenses);
 };
 
 const localStoreData = function () {
@@ -42,9 +50,10 @@ const localStoreData = function () {
 const init = function () {
   const userDataStorage = localStorage.getItem('userData');
   if (userDataStorage) state.account = JSON.parse(userDataStorage);
-  // userTotalBalance();
-  // userIncomes();
-  // userExpenses();
+  userTotalBalance();
+  userIncomes();
+  userExpenses();
+  userSavings();
 };
 
 init();

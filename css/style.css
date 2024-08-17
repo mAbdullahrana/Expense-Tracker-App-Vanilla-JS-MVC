@@ -232,10 +232,11 @@ img {
 .movements {
   background-color: var(--fourth-color);
   border-radius: 1rem;
+  /* overflow: scroll; */
 }
 
 .movements__row {
-  padding: 2rem 2rem;
+  padding: 2rem 1rem;
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--fifth-color);
@@ -280,6 +281,12 @@ img {
   text-align: center;
 }
 
+.movements__scrollable {
+  max-height: 0;
+  overflow-y: auto;
+  transition: max-height 0.3s ease-in-out;
+}
+
 .hidden {
   display: none;
   transition: all 1s;
@@ -289,6 +296,7 @@ img {
 
 .signup {
   padding: 2rem 2rem;
+  grid-column: span 3;
 }
 
 .signup__container {

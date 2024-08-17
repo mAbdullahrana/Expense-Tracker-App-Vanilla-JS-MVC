@@ -1,19 +1,15 @@
 import View from './view.js';
 
-
 class AppView extends View {
   _parent = document.querySelector('.app');
-  _signup = document.querySelector('.signup');
 
 
-  render(data) {
-    this._signup.innerHTML = '';
-    const markup = this._generateMarkup(data);
-    this._parent.insertAdjacentHTML('afterbegin', markup);
-  }
+
+
 
   _generateMarkup(data) {
-   return`<div class="menu">
+    console.log(this.#rowMarkup(data));
+    return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
           <li class="side__menu-main-item">
@@ -54,7 +50,9 @@ class AppView extends View {
       <div>
         <p class="balance__label">Total balance</p>
       </div>
-      <p class="balance__value">10000<span class="currency"> RS</span></p>
+      <p class="balance__value">${
+        data.totalBalance || 0
+      }<span class="currency"> RS</span></p>
     </div>
 
 
@@ -66,7 +64,9 @@ class AppView extends View {
         </div>
         <div class="expenses__detail">
           <p class="expenses__detail-title">Expenses</p>
-          <p class="expenses__detail-value">5000 <span class="currency">RS</span></p>
+          <p class="expenses__detail-value">${
+            Math.abs(data.expenses) || 0
+          } <span class="currency">RS</span></p>
         </div>
       </div>
 
@@ -77,7 +77,9 @@ class AppView extends View {
         </div>
       <div class="income__detail">
       <p class="income__detail-title">Incomes</p>
-      <p class="income__value">1000 <span class="currency">RS</span></p>
+      <p class="income__value">${
+        data.incomes || 0
+      } <span class="currency">RS</span></p>
     </div>
     </div>
 
@@ -88,7 +90,9 @@ class AppView extends View {
         </div>
       <div class="saving__detail">
       <p class="saving__detail-title">Savings</p>
-      <p class="saving__value">1000 <span class="currency">RS</span></p>
+      <p class="saving__value">${
+        data.savings || 0
+      } <span class="currency">RS</span></p>
     </div>
     </div>
 
@@ -99,7 +103,9 @@ class AppView extends View {
         </div>
       <div class="credit__detail">
       <p class="credit__detail-title">Credits</p>
-      <p class="credit__value">1000 <span class="currency">Rs</span></p>
+      <p class="credit__value">${
+        data.credits || 0
+      } <span class="currency">Rs</span></p>
     </div>
     </div>
  
@@ -111,28 +117,25 @@ class AppView extends View {
     <div class="movements">
       <h2 class="operation__heading">Operations History</h2>
       <hr>
-      <div class="movements__row">
-        <div class="movements__type movements__type--deposit">2 deposit</div>
-        <div class="movements__operation-reason">For buying balls</div>
-        <div class="movements__value">4 000 <span class="currency">RS</span></div>
-      </div>
-      <div class="movements__row">
-        <div class="movements__type movements__type--withdrawal">
-          1 withdrawal
-        </div>
-        <div class="movements__operation-reason">For buying nets</div>
-        <div class="movements__value">-378 <span class="currency">RS</span></div>
-      </div>
-      <div class="movements__row">
-        <div class="movements__type movements__type--withdrawal">
-          1 withdrawal
-        </div>
-        <div class="movements__operation-reason">For buying nets</div>
-        <div class="movements__value">-378 <span class="currency">RS</span></div>
-      </div>
+      
+      ${this.#rowMarkup(data)}
+      
     </div>
   </div>`;
   }
+
+  #rowMarkup(data) {
+    return ( data.movements.map((mov, i) =>{
+       const type = mov > 0 ? 'deposit' : 'withdrawal';
+        return `
+    <div class="movements__row">
+      <div class="movements__type movements__type--${type}">${i + 1} ${type} </div>
+      <div class="movements__operation-reason">For buying nets</div>
+      <div class="movements__value">${Math.abs(mov)} RS</div>
+    </div>
+  `;
+     })).join('');
+   }
 }
 
 export default new AppView();
