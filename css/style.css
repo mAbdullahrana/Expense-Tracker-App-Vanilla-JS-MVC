@@ -228,11 +228,20 @@ img {
 }
 
 /* MOVEMENTS */
-
 .movements {
   background-color: var(--fourth-color);
   border-radius: 1rem;
-  /* overflow: scroll; */
+  overflow: hidden;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+
+.movements__scrollable {
+  max-height: 0;
+  overflow-y: auto;
+  transition: max-height 0.3s ease-in-out;
+  max-height: 50vh;
 }
 
 .movements__row {
@@ -251,23 +260,26 @@ img {
   color: var(--primary-color);
   padding: 0.5rem 1rem;
   border-radius: 10rem;
-  /* margin-right: 2rem; */
 }
 
-.movements__type--deposit {
+.movements__type--income {
   background-image: linear-gradient(
     to top left,
     var(--third-color),
     var(--fourth-color)
   );
+  width : 38%;
+  text-align: center;
 }
 
-.movements__type--withdrawal {
+.movements__type--expense {
   background-image: linear-gradient(
     to top left,
     var(--fifth-color),
     var(--fourth-color)
   );
+  width : 38%;
+  text-align: center;
 }
 
 .movements__value {
@@ -281,11 +293,34 @@ img {
   text-align: center;
 }
 
-.movements__scrollable {
-  max-height: 0;
-  overflow-y: auto;
-  transition: max-height 0.3s ease-in-out;
+
+/* To handle the scrollable section */
+
+/* Scrollbar Styles */
+.movements__scrollable::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
 }
+
+.movements__scrollable::-webkit-scrollbar-track {
+  background: var(--fourth-color); /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.movements__scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid var(--fourth-color); /* Border around the thumb */
+}
+
+.movements__scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: var(--third-color); /* Color of the thumb on hover */
+}
+
+.movements__scrollable::-webkit-scrollbar-thumb:active {
+  background-color: var(--fifth-color); /* Color of the thumb when active (clicked) */
+}
+
+
 
 .hidden {
   display: none;

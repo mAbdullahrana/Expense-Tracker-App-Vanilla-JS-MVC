@@ -3,10 +3,6 @@ import View from './view.js';
 class AppView extends View {
   _parent = document.querySelector('.app');
 
-
-
-
-
   _generateMarkup(data) {
     console.log(this.#rowMarkup(data));
     return `<div class="menu">
@@ -117,25 +113,29 @@ class AppView extends View {
     <div class="movements">
       <h2 class="operation__heading">Operations History</h2>
       <hr>
-      
+      <div class="movements__scrollable">
       ${this.#rowMarkup(data)}
-      
+      </div>
     </div>
   </div>`;
   }
 
   #rowMarkup(data) {
-    return ( data.movements.map((mov, i) =>{
-       const type = mov > 0 ? 'deposit' : 'withdrawal';
+    return data.movements
+      .map((mov, i) => {
+        const type = mov > 0 ? 'income' : 'expense';
         return `
     <div class="movements__row">
-      <div class="movements__type movements__type--${type}">${i + 1} ${type} </div>
+      <div class="movements__type movements__type--${type}">${
+          i + 1
+        } ${type} </div>
       <div class="movements__operation-reason">For buying nets</div>
       <div class="movements__value">${Math.abs(mov)} RS</div>
     </div>
   `;
-     })).join('');
-   }
+      })
+      .join('');
+  }
 }
 
 export default new AppView();

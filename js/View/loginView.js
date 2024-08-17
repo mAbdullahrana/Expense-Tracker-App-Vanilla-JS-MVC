@@ -12,7 +12,8 @@ class LoginView extends View {
       const pin = +document.querySelector('.navbar__login-input--pin').value;
       if (user === '' || pin === 0) return;
       handler(user, pin);
-      this._parent=''
+      console.log(this._parent);
+      this._parent.innerHTML=''
     });
   }
 }
