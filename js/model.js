@@ -1,7 +1,7 @@
 export const state = {
   account: {
     owner: '',
-    movements: [450, -200, 600, -1000, 700, 900],
+    movements: [],
     pin: '',
     credits: [],
   },
@@ -20,22 +20,28 @@ export const loginUser = function (userName, pin) {
 };
 
 const userTotalBalance = function () {
-  state.account.totalBalance = state.account.movements.reduce(
-    (acc, num) => acc + num,
-    0
-  );
+  if (state.account.movements.length > 0) {
+    state.account.totalBalance = state.account.movements.reduce(
+      (acc, num) => acc + num,
+      0
+    );
+  }
 };
 
 const userIncomes = function () {
-  state.account.incomes = state.account.movements
-    .filter(num => num > 0)
-    .reduce((acc, num) => acc + num);
+  if (state.account.movements.length > 0) {
+    state.account.incomes = state.account.movements
+      .filter(num => num > 0)
+      .reduce((acc, num) => acc + num);
+  }
 };
 
 const userExpenses = function () {
-  state.account.expenses = state.account.movements
-    .filter(num => num < 0)
-    .reduce((acc, num) => acc + num);
+  if (state.account.movements.length > 0) {
+    state.account.expenses = state.account.movements
+      .filter(num => num < 0)
+      .reduce((acc, num) => acc + num);
+  }
 };
 
 const userSavings = function () {

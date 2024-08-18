@@ -73,9 +73,10 @@ img {
 }
 
 .navbar__welcome {
-  font-size: 1.3rem;
+  font-size: 1.8em;
   font-weight: 400;
 }
+
 .navbar__login {
   display: flex;
   justify-content: flex-end;
@@ -121,21 +122,34 @@ img {
   color: var(--third-color);
 }
 
-.app {
-  /* position: relative; */
+/* .app {
   max-width: 100%;
-  /* margin: 4rem auto; */
+  display: grid;
+  grid-template-columns: 1.02fr 2fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+  height: 85vh;
+  opacity: 1;
+  transition: all 1s;
+} */
+
+.app {
+  max-width: 100%;
   display: grid;
   grid-template-columns: 1.02fr 2fr 2fr;
   grid-template-rows: 1fr 1fr;
   gap: 2rem;
   height: 85vh;
 
-  /* NOTE This creates the fade in/out anumation */
+  /* Smooth transition for opacity and transform */
   opacity: 1;
-  transition: all 1s;
+  transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
-
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
 .menu {
   border-right: solid 2px var(--fourth-color);
 }
@@ -234,6 +248,7 @@ img {
   overflow: hidden;
   padding-bottom: 10px;
   width: 100%;
+  font-family: inherit;
 }
 
 
@@ -251,6 +266,7 @@ img {
   border-bottom: 1px solid var(--fifth-color);
   gap: 1rem;
   flex: 1;
+ 
 }
 
 .movements__type {
@@ -287,6 +303,12 @@ img {
   margin-left: auto;
 }
 
+.movements__date {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .movements__operation-reason {
   font-size: 1.1rem;
   margin: auto;
@@ -321,11 +343,6 @@ img {
 }
 
 
-
-.hidden {
-  display: none;
-  transition: all 1s;
-}
 
 /* Sign up form */
 
@@ -416,4 +433,9 @@ img {
   outline: none;
   background-color: var(--third-color);
  
+}
+
+
+.error{
+  text-align: center;
 }

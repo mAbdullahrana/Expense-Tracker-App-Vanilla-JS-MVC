@@ -10,6 +10,7 @@ const controlUserSignUp = function (userName, pin) {
 const controlUserLogin = function (user, pin) {
   if (model.loginUser(user, pin)) {
     appView.render(model.state.account);
+    loginView.render(model.state.account)
   }
 };
 const init = function () {

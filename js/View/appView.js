@@ -2,32 +2,29 @@ import View from './view.js';
 
 class AppView extends View {
   _parent = document.querySelector('.app');
-
+ 
+ 
   _generateMarkup(data) {
-    console.log(this.#rowMarkup(data));
+    this._parent.classList.remove('hidden');
     return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
           <li class="side__menu-main-item">
             <a href="#dashboard" class="side__menu-main-link">Dashboard</a
-            ><i class="side__menu-icon fa-solid fa-table-columns"></i></i>
-          </li>
-          <li class="side__menu-main-item">
-            <a href="#incomes" class="side__menu-main-link">Add Incomes</a
-            ><i class="side__menu-icon fa-solid fa-arrow-right-long"></i>
-          </li>
-          <li class="side__menu-main-item">
-            <a href="#outcomes" class="side__menu-main-link">Add Outcomes</a
-            ><i class=" side__menu-icon fa-solid fa-arrow-left-long"></i></i>
-          </li>
-          <li class="side__menu-main-item">
-            <a href="#expenses" class="side__menu-main-link">Add New Expenses</a
-            ><i class=" side__menu-icon fa-solid fa-arrow-left-long"></i></i>
+            ><i class="side__menu-icon fa-solid fa-table-columns"></i>
           </li>
           <li class="side__menu-main-item">
             <a href="#operations" class="side__menu-main-link">Operations</a
-            ><i class=" side__menu-icon fa-solid fa-timeline"></i></i>
+            ><i class=" side__menu-icon fa-solid fa-timeline"></i>
           </li>
+          <li class="side__menu-main-item">
+            <a href="#plans" class="side__menu-main-link">Plans</a
+            ><i class="side__menu-icon fa-regular fa-calendar-days"></i>
+          </li>
+          <li class="side__menu-main-item">
+            <a href="#history" class="side__menu-main-link">History</a
+            ><i class=" side__menu-icon fa-solid fa-clock-rotate-left"></i>
+          </li> 
         </ul>
       </aside>
 
@@ -56,7 +53,7 @@ class AppView extends View {
       <div class="overview">
      <div class="box expenses">
       <div class="expenses__logo">
-        <a href=""><i class="summary__icon fa-solid fa-arrow-left-long"></i></a>
+         <i class="summary__icon fa-solid fa-arrow-left-long"></i>
         </div>
         <div class="expenses__detail">
           <p class="expenses__detail-title">Expenses</p>
@@ -69,7 +66,7 @@ class AppView extends View {
     <!-- Incomings -->
     <div class="box income">
       <div class="income__logo">
-        <a href=""><i class="summary__icon fa-solid fa-arrow-right-long"></i></a>
+        <i class="summary__icon fa-solid fa-arrow-right-long"></i>
         </div>
       <div class="income__detail">
       <p class="income__detail-title">Incomes</p>
@@ -82,7 +79,7 @@ class AppView extends View {
     <!-- savings -->
     <div class="box saving">
       <div class="saving__logo">
-        <a href=""><i class="summary__icon fa-solid fa-piggy-bank"></i></a>
+        <i class="summary__icon fa-solid fa-piggy-bank"></i>
         </div>
       <div class="saving__detail">
       <p class="saving__detail-title">Savings</p>
@@ -95,7 +92,7 @@ class AppView extends View {
     <!-- Credits -->
     <div class="box credit">
       <div class="credit__logo">
-        <a href=""><i class="summary__icon fa-solid fa-credit-card"></i></a>
+        <i class="summary__icon fa-solid fa-credit-card"></i>
         </div>
       <div class="credit__detail">
       <p class="credit__detail-title">Credits</p>
@@ -121,20 +118,28 @@ class AppView extends View {
   }
 
   #rowMarkup(data) {
-    return data.movements
-      .map((mov, i) => {
-        const type = mov > 0 ? 'income' : 'expense';
-        return `
+    if (data.movements.length > 0) {
+      return data.movements
+        .map((mov, i) => {
+          const type = mov > 0 ? 'income' : 'expense';
+          return `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${
-          i + 1
-        } ${type} </div>
-      <div class="movements__operation-reason">For buying nets</div>
+            i + 1
+          } ${type} </div>
+      <div class="movements__date">3 days ago</div>
       <div class="movements__value">${Math.abs(mov)} RS</div>
     </div>
   `;
-      })
-      .join('');
+        })
+        .join('');
+    } else {
+      return `
+   <div class="movements__row">
+        <div class="movements__date">No Operations Yet!</div>
+    </div>
+  `;
+    }
   }
 }
 

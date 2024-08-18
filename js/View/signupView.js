@@ -13,12 +13,15 @@ class SignUpView extends View {
         .value;
       if (userName === '' || userPin === '') return;
       handler(userName, userPin);
-    });
+      this._parent.classList.add('hidden');
+    }.bind(this));
   }
 
   _generateMarkup(data) {
     return data.owner === ''
-      ?`<div class="signup">
+      ? `
+    ${this._parent.classList.remove('hidden')}
+    <div class="signup">
         <div class="signup__container">
           <div class="signup__content">
             <div class="signup__title">
@@ -56,7 +59,8 @@ class SignUpView extends View {
             </div>
           </div>
         </div>
-      </div>` : '';
+      </div>`
+      : '';
   }
 }
 
