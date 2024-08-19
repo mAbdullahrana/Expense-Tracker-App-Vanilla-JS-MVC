@@ -3,6 +3,7 @@ import loginView from './view/loginView.js';
 import signupView from './view/signupView.js';
 import AppView from './View/appView.js';
 import OperationView from './View/operationView.js';
+import operationView from './View/operationView.js';
 
 const controlUserSignUp = function (userName, pin) {
   model.createNewAccount(userName, pin);
@@ -15,18 +16,24 @@ const controlUserLogin = function (user, pin) {
   }
 };
 
-const controlOperationsHashChange = function(){
-  OperationView.render(model.state.account)
-}
-const controlDashboardHashChange = function(){
-  AppView.render(model.state.account)
-}
+const controlOperationsHashChange = function () {
+  OperationView.render(model.state.account);
+};
+const controlDashboardHashChange = function () {
+  AppView.render(model.state.account);
+};
+
+const controlAddIncomes = function (message, amount) {
+  model.state.account.movements.push(amount);
+  model.state.account.message.push(message);
+};
 const init = function () {
   signupView.render(model.state.account);
   signupView.addHandlerUserSignUp(controlUserSignUp);
   loginView.addHandlerUserLogin(controlUserLogin);
-  OperationView.addHandlerHashChange(controlOperationsHashChange);
   AppView.addHandlerHashChange(controlDashboardHashChange);
+  OperationView.addHandlerHashChange(controlOperationsHashChange);
+  OperationView.addHandlerAddIncomes(controlAddIncomes);
 };
 
 init();

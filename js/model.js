@@ -2,6 +2,7 @@ export const state = {
   account: {
     owner: '',
     movements: [],
+    message:[],
     pin: '',
     credits: [],
   },
