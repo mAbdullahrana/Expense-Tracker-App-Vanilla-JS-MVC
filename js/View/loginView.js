@@ -3,6 +3,7 @@ import * as model from './../model.js';
 
 class LoginView extends View {
   _parent = document.querySelector('.navbar');
+  _hash = 'login';
 
   _generateMarkup(data){
     return `<nav class="navbar">
@@ -12,7 +13,7 @@ class LoginView extends View {
         </div>
         <div class="navbar__content">
           <div class="navbar__message">
-            <p class="navbar__welcome">HI, ${data.owner}!</p>
+            <p class="navbar__welcome">HI, ${data.owner.toUpperCase()}!</p>
           </div>
           <div class="navbar__login hidden">
             <div class="navbar__login-form">

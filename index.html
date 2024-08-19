@@ -42,7 +42,7 @@
                 class="navbar__login-input navbar__login-input--user"
               />
               <input
-                type="text"
+                type="password"
                 placeholder="PIN"
                 class="navbar__login-input navbar__login-input--pin"
               />
@@ -57,11 +57,69 @@
       </div>
     </nav>
 
-  
-
     <!-- Main Content -->
     <main class="app hidden">
-        <!-- <div class="menu">
+      <div class="add__income">
+        <div class="add__income-content">
+          <div class="add__income-content-title">
+            <h2 class="add__income-content-heading">Add Your Income</h2>
+          </div>
+          <form id="add__income-Form">
+            <input
+              class="add__income-input--message"
+              type="text"
+              id="message"
+              name="message"
+              placeholder="Income Message"
+              required
+            />
+            <input
+              class="add__income-input--amount"
+              type="number"
+              id="amount"
+              name="amount"
+              placeholder="Amount"
+              required
+            />
+
+            <button type="submit" class="add__income-submit-btn primary-btn">
+              Add Income
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="add__expense">
+        <div class="add__expense-content">
+          <div class="add__expense-content-title">
+            <h2 class="add__expense-content-heading">Add Your Expense</h2>
+          </div>
+          <form id="add__expense-Form">
+            <input
+              class="add__expense-input--message"
+              type="text"
+              id="message"
+              name="message"
+              placeholder="expense Message"
+              required
+            />
+            <input
+              class="add__expense-input--amount"
+              type="number"
+              id="amount"
+              name="amount"
+              placeholder="Amount"
+              required
+            />
+
+            <button type="submit" class="add__expense-submit-btn primary-btn">
+              Add Expense
+            </button>
+          </form>
+        </div>
+      </div>
+     
+      <!-- <div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
           <li class="side__menu-main-item">
@@ -97,7 +155,7 @@
       </aside>
     </div> -->
 
-        <!-- <div class="summary">
+      <!-- <div class="summary">
     <div class="balance">
       <div>
         <p class="balance__label">Total balance</p>
@@ -105,8 +163,8 @@
       <p class="balance__value">10,000<span class="currency"> RS</span></p>
     </div> -->
 
-        <!-- Expenses -->
-        <!-- <div class="overview">
+      <!-- Expenses -->
+      <!-- <div class="overview">
      <div class="box expenses">
       <div class="expenses__logo">
         <a href=""><i class="summary__icon fa-solid fa-arrow-left-long"></i></a>
@@ -117,8 +175,8 @@
         </div>
       </div> -->
 
-        <!-- Incomings -->
-        <!-- <div class="box income">
+      <!-- Incomings -->
+      <!-- <div class="box income">
       <div class="income__logo">
         <a href=""><i class="summary__icon fa-solid fa-arrow-right-long"></i></a>
         </div>
@@ -128,8 +186,8 @@
     </div>
     </div> -->
 
-        <!-- savings -->
-        <!-- <div class="box saving">
+      <!-- savings -->
+      <!-- <div class="box saving">
       <div class="saving__logo">
         <a href=""><i class="summary__icon fa-solid fa-piggy-bank"></i></a>
         </div>
@@ -139,8 +197,8 @@
     </div>
     </div> -->
 
-        <!-- Credits -->
-        <!-- <div class="box credit">
+      <!-- Credits -->
+      <!-- <div class="box credit">
       <div class="credit__logo">
         <a href=""><i class="summary__icon fa-solid fa-credit-card"></i></a>
         </div>
@@ -153,7 +211,7 @@
   </div>
 </div> -->
 
-        <!-- <div class="operations__history">
+      <!-- <div class="operations__history">
     <div class="movements">
       <h2 class="operation__heading">Operations History</h2>
       <hr>
@@ -180,8 +238,8 @@
   </div>  -->
     </main>
 
-      <!-- Sign up Form -->
-      <!-- <div class="signup">
+    <!-- Sign up Form -->
+    <!-- <div class="signup">
         <div class="signup__container">
           <div class="signup__content">
             <div class="signup__title">
@@ -220,6 +278,5 @@
           </div>
         </div>
       </div> -->
-   
   </body>
 </html>

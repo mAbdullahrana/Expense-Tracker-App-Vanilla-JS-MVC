@@ -2,6 +2,8 @@ import View from './view.js';
 
 class AppView extends View {
   _parent = document.querySelector('.app');
+  _hash = 'dashboard'
+
  
  
   _generateMarkup(data) {
@@ -9,8 +11,8 @@ class AppView extends View {
     return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
-          <li class="side__menu-main-item">
-            <a href="#dashboard" class="side__menu-main-link">Dashboard</a
+          <li class="side__menu-main-item ${window.location.hash === '#dashboard' ? 'current' : ''}">
+            <a href="#dashboard" class="side__menu-main-link ">Dashboard</a
             ><i class="side__menu-icon fa-solid fa-table-columns"></i>
           </li>
           <li class="side__menu-main-item">
