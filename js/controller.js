@@ -41,3 +41,5 @@ const init = async function () {
 };
 
 init();
+
+console.log('test');

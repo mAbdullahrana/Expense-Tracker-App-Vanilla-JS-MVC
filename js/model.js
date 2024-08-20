@@ -24,11 +24,19 @@ export const addOperation = function(amount,message,operation){
 if(operation === 'income'){
   state.account.movements.push(amount);
   state.account.message.push(message);
+  userTotalBalance();
+  userIncomes();
+  userExpenses();
+  userSavings();
   localStoreData();
 }
 if(operation === 'expense'){
   state.account.movements.push(-amount);
   state.account.message.push(message);
+  userTotalBalance();
+  userIncomes();
+  userExpenses();
+  userSavings();
   localStoreData();
 }
 }
