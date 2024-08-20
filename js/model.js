@@ -62,7 +62,7 @@ const userExpenses = function () {
   if (state.account.movements.length > 0) {
     state.account.expenses = state.account.movements
       .filter(num => num < 0)
-      .reduce((acc, num) => acc + num);
+      .reduce((acc, num) => acc + num,0);
   }
 };
 

@@ -18,7 +18,7 @@ class OperationView extends View {
       // Validate amount
       if (amount <= 0) return;
       handler(message, amount);
-      document.querySelector('.add__income-form').reset();
+      document.querySelector('.add__expense-form').reset();
     });
   }
   addHandlerAddIncomes(handler) {
