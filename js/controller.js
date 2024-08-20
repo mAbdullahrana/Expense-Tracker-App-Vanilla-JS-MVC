@@ -24,16 +24,20 @@ const controlDashboardHashChange = function () {
 };
 
 const controlAddIncomes = function (message, amount) {
-  model.state.account.movements.push(amount);
-  model.state.account.message.push(message);
+ model.addOperation(amount,message,'income')
 };
-const init = function () {
+const controlAddExpense = function (message, amount) {
+ model.addOperation(amount,message,'expense')
+};
+
+const init = async function () {
   signupView.render(model.state.account);
   signupView.addHandlerUserSignUp(controlUserSignUp);
   loginView.addHandlerUserLogin(controlUserLogin);
   AppView.addHandlerHashChange(controlDashboardHashChange);
   OperationView.addHandlerHashChange(controlOperationsHashChange);
   OperationView.addHandlerAddIncomes(controlAddIncomes);
+  OperationView.addHandlerAddExpense(controlAddExpense);
 };
 
 init();

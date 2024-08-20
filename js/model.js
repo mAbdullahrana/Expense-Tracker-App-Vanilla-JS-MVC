@@ -20,6 +20,19 @@ export const loginUser = function (userName, pin) {
     : false;
 };
 
+export const addOperation = function(amount,message,operation){
+if(operation === 'income'){
+  state.account.movements.push(amount);
+  state.account.message.push(message);
+  localStoreData();
+}
+if(operation === 'expense'){
+  state.account.movements.push(-amount);
+  state.account.message.push(message);
+  localStoreData();
+}
+}
+
 const userTotalBalance = function () {
   if (state.account.movements.length > 0) {
     state.account.totalBalance = state.account.movements.reduce(

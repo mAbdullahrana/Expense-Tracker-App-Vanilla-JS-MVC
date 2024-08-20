@@ -5,23 +5,35 @@ class OperationView extends View {
   _hash = 'operations';
 
 
-  addHandlerAddIncomes(handler) {
+  addHandlerAddExpense(handler) {
     this._parent.addEventListener('submit', function (e) {
       e.preventDefault();
-      const btn = e.target.closest('.add__income-Form').querySelector('.add__income-submit-btn');
+      const btn = e.target.closest('.app').querySelector('.add__expense-submit-btn')
       if (!btn) return;
 
       // Get input values
-      const message = document.querySelector('#message').value;
-      const amount = +document.querySelector('#amount').value;
-      handler(message, amount);
+      const message = document.querySelector('.add__expense-input--message').value;
+      const amount = +document.querySelector('.add__expense-input--amount').value;
 
       // Validate amount
-      if (amount <= 0) {
-        alert('Please enter a positive amount.');
-        return;
-      }
-      document.querySelector('.add__income-Form').reset();
+      if (amount <= 0) return;
+      handler(message, amount);
+      document.querySelector('.add__income-form').reset();
+    });
+  }
+  addHandlerAddIncomes(handler) {
+    this._parent.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = e.target.closest('.app').querySelector('.add__income-submit-btn');
+      if (!btn) return;
+
+      // Get input values
+      const message = document.querySelector('.add__income-input--message').value;
+      const amount = +document.querySelector('.add__income-input--amount').value;
+      // Validate amount
+      if (amount <= 0) return;
+      handler(message, amount);
+      document.querySelector('.add__income-form').reset();
     });
   }
 
@@ -63,7 +75,7 @@ class OperationView extends View {
           <div class="add__income-content-title">
             <h2 class="add__income-content-heading">Add Your Income</h2>
           </div>
-          <form class="add__income-Form">
+          <form class="add__income-form">
             <input
               class="add__income-input--message"
               type="text"
@@ -92,7 +104,7 @@ class OperationView extends View {
           <div class="add__expense-content-title">
             <h2 class="add__expense-content-heading">Add Your Expense</h2>
           </div>
-          <form class="add__expense-Form">
+          <form class="add__expense-form">
             <input
               class="add__expense-input--message"
               type="text"
