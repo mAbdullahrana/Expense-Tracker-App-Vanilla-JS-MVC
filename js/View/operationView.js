@@ -85,7 +85,7 @@ class OperationView extends View {
               required
             />
             <input
-              class="add__income-input--amount"
+              class="add__income-input--amount amount-input"
               type="number"
               id="amount"
               name="amount"
@@ -114,7 +114,7 @@ class OperationView extends View {
               required
             />
             <input
-              class="add__expense-input--amount"
+              class="add__expense-input--amount  amount-input"
               type="number"
               id="amount"
               name="amount"

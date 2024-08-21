@@ -3,7 +3,7 @@ import loginView from './view/loginView.js';
 import signupView from './view/signupView.js';
 import AppView from './View/appView.js';
 import OperationView from './View/operationView.js';
-import operationView from './View/operationView.js';
+import PlanView from './View/planView.js';
 
 const controlUserSignUp = function (userName, pin) {
   model.createNewAccount(userName, pin);
@@ -22,12 +22,15 @@ const controlOperationsHashChange = function () {
 const controlDashboardHashChange = function () {
   AppView.render(model.state.account);
 };
+const controlPlanHashChange = function () {
+  PlanView.render(model.state.account);
+};
 
 const controlAddIncomes = function (message, amount) {
- model.addOperation(amount,message,'income')
+  model.addOperation(amount, message, 'income');
 };
 const controlAddExpense = function (message, amount) {
- model.addOperation(amount,message,'expense')
+  model.addOperation(amount, message, 'expense');
 };
 
 const init = async function () {
@@ -38,7 +41,8 @@ const init = async function () {
   OperationView.addHandlerHashChange(controlOperationsHashChange);
   OperationView.addHandlerAddIncomes(controlAddIncomes);
   OperationView.addHandlerAddExpense(controlAddExpense);
+  PlanView.addHandlerHashChange(controlPlanHashChange);
+  // PlanView.addHandlerAddPlan()
 };
 
 init();
-
