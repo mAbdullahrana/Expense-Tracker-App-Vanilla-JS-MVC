@@ -4,7 +4,6 @@ class PlanView extends View {
   _parent = document.querySelector('.app');
   _hash = 'plans';
 
-
   addHandlerAddPlan(handler) {
     this._parent.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -18,22 +17,28 @@ class PlanView extends View {
 
       handler(expenseName, amount, date);
 
-      // document.querySelector('.add__plan-form').reset();
+      document.querySelector('.add__plan-form ').reset();
     });
   }
 
   addHandlerDeletePlan(handler) {
     this._parent.addEventListener('click', function (e) {
-      const btn = e.target
-        .closest('.app')
-        .querySelector('.plan__expense-btn--delete');
-      if (!btn) return;
-      
-      console.log(btn);
-      handler(btn.dataset.id);
+      const targetButton = e.target.closest('.plan__expense-btn--delete');
+
+      if (targetButton) {
+        const planId = targetButton.dataset.id;
+
+        let isDeleting = false;
+        if (!isDeleting) {
+          isDeleting = true;
+          handler(planId);
+          isDeleting = false;
+        }
+        targetButton.removeEventListener('click', this);
+      }
     });
   }
-  _generateMarkup({ plans }) {
+  _generateMarkup({ plans, totalPlanned, remainingBalance }) {
     return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
@@ -73,7 +78,7 @@ class PlanView extends View {
     </div>
       
   
-          <form class="add__plan-form">
+          <form class="add__plan-form ">
           <input type="text" id="expense-name" class="add__plan-input--note" placeholder="Expense Name">
         <input type="number" id="expense-amount" class="add__plan-input--amount amount-input" placeholder="Target Amount">
         <input type="date" id="expense-date"  class="add__plan-input--amount" placeholder="Planned Date">
@@ -87,18 +92,18 @@ class PlanView extends View {
     </div>
 
     <div class ="plan">
-    <ul class="plan__expense-list plan__expense-list--scrollable" id="expense-list">
+    <ul class="plan__expense-list movements__scrollable" id="expense-list">
         ${this.#plansMarkup(plans)}
     </ul>
 
     <div class="plan__expense-summary summary">
     <div class ="plan__expense-total">
         <h3 class = "plan__expense-summary--total">Total Planned 👉</h3>
-        <p> $2000</p>
+        <p> ${totalPlanned} RS</p>
      </div>  
      <div class ="plan__expense-remaining"> 
         <h3 class ="plan__expense-summary--remaining">Budget Remaining 👉</h3>
-        <p> $5000</p>
+        <p> ${remainingBalance} RS</p>
      </div>   
     </div>
 </div>
@@ -118,7 +123,6 @@ class PlanView extends View {
                 <span>${plan.expenseAmount} RS - Due: ${plan.expenseDate}</span>
             </div>
             <div class = "plan__expense-btn">
-                <button class = "plan__expense-btn--edit" data-id ="${plan.id}">Edit</button>
                 <button class = "plan__expense-btn--delete" data-id ="${plan.id}" >Delete</button>
             </div>
         </li>

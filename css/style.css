@@ -622,10 +622,10 @@ img {
 }
 
 .plan__expense-list--scrollable{
-    max-height: 0;
-    overflow-y: auto;
-    transition: max-height 0.3s ease-in-out;
-    max-height: 70vh;
+  max-height: 0;
+  overflow-y: auto;
+  transition: max-height 0.3s ease-in-out;
+  max-height: 50vh;
 }
 .plan__expense-item {
   display: flex;
@@ -672,12 +672,12 @@ img {
 }
 .plan__expense-summary {
   display: flex;
-  /* text-align: center; */
   justify-content: space-between;
   padding: 1rem 2rem;
   background-color: var(--third-color);
   border-radius: 1rem;
   flex-direction: column;
+  margin-top: 1rem;
 }
 
 .plan__expense-remaining , .plan__expense-total {

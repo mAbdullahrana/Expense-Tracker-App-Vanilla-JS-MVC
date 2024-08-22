@@ -4,7 +4,6 @@ import signupView from './view/signupView.js';
 import AppView from './View/appView.js';
 import OperationView from './View/operationView.js';
 import PlanView from './View/planView.js';
-import planView from './View/planView.js';
 
 const controlUserSignUp = function (userName, pin) {
   model.createNewAccount(userName, pin);
@@ -39,9 +38,8 @@ const controlAddPlan = function (expenseName, amount, date) {
 };
 
 const controlDeletePlan = function (id) {
-  console.log(id);
-  // model.deletePlan(id);
-  // PlanView.render(model.state.account);
+  model.deletePlan(id);
+  PlanView.render(model.state.account);
 };
 
 const init = async function () {

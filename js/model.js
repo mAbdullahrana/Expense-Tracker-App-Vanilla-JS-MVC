@@ -43,6 +43,7 @@ export const addPlan = function (expenseName, amount, date) {
     expenseDate: date,
     id: ids(),
   });
+  planAmounts();
   localStoreData();
 };
 
@@ -51,8 +52,17 @@ export const deletePlan = function (id) {
     state.account.plans.findIndex(el => el.id === id),
     1
   );
-
+  planAmounts();
   localStoreData();
+};
+
+const plannedBalance = function () {
+  return state.account.plans
+    .map(el => el.expenseAmount)
+    .reduce((acc, num) => acc + num, 0);
+};
+const remainingBalance = function () {
+  return state.account.totalBalance - state.account.totalPlanned;
 };
 
 const userTotalBalance = function () {
@@ -92,11 +102,17 @@ const ids = function () {
   return Date.now().toString(36) + Math.random().toString(36).slice(2);
 };
 
+const planAmounts = function () {
+  state.account.totalPlanned = plannedBalance();
+  state.account.remainingBalance = remainingBalance();
+};
+
 const calcMoney = function () {
   userTotalBalance();
   userIncomes();
   userExpenses();
   userSavings();
+  planAmounts();
 };
 
 const init = function () {
