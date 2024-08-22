@@ -4,22 +4,36 @@ class PlanView extends View {
   _parent = document.querySelector('.app');
   _hash = 'plans';
 
-  constructor(){
-    super()
-  this.addHandlerAddPlan()
-  }
 
-
-
-  addHandlerAddPlan(){
-    this._parent.addEventListener('submit', function(e) {
+  addHandlerAddPlan(handler) {
+    this._parent.addEventListener('submit', function (e) {
       e.preventDefault();
-      const btn = e.target.closest('.app').querySelector('.add__plan-btn');
-      if(!btn) return;
-      console.log(btn);
-    })
+      const btn = e.target
+        .closest('.app')
+        .querySelector('.add__plan-submit-btn');
+      if (!btn) return;
+      const expenseName = document.querySelector('#expense-name').value;
+      const amount = +document.querySelector('#expense-amount').value;
+      const date = document.querySelector('#expense-date').value;
+
+      handler(expenseName, amount, date);
+
+      // document.querySelector('.add__plan-form').reset();
+    });
   }
-  _generateMarkup() {
+
+  addHandlerDeletePlan(handler) {
+    this._parent.addEventListener('click', function (e) {
+      const btn = e.target
+        .closest('.app')
+        .querySelector('.plan__expense-btn--delete');
+      if (!btn) return;
+      
+      console.log(btn);
+      handler(btn.dataset.id);
+    });
+  }
+  _generateMarkup({ plans }) {
     return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
@@ -56,12 +70,10 @@ class PlanView extends View {
     <div class="add__plan-header">
         <h1 class = "add__plan-heading">Plan Your Future Expenses</h1>
         <p class = "add__plan-subheading">Organize and manage your upcoming expenses to maintain financial control.</p>
-
-        <button type="submit" class="add__plan-btn secondary-btn">Add New Expense Plan</button> 
     </div>
       
   
-          <form class="add__plan-form ">
+          <form class="add__plan-form">
           <input type="text" id="expense-name" class="add__plan-input--note" placeholder="Expense Name">
         <input type="number" id="expense-amount" class="add__plan-input--amount amount-input" placeholder="Target Amount">
         <input type="date" id="expense-date"  class="add__plan-input--amount" placeholder="Planned Date">
@@ -75,28 +87,44 @@ class PlanView extends View {
     </div>
 
     <div class ="plan">
-    <ul class="plan__expense-list" id="expense-list">
-        <li class="plan__expense-item expense-item">
-            <div class = "plan__expense-detail">
-                <h3 class = "plan__expense-detail-heading">Vacation Savings</h3>
-                <span>2000 RS - Due: 2024-12-01</span>
-            </div>
-            <div class = "plan__expense-btn">
-                <button class = "plan__expense-btn--edit ">Edit</button>
-                <button class = "plan__expense-btn--delete" >Delete</button>
-            </div>
-        </li>
+    <ul class="plan__expense-list plan__expense-list--scrollable" id="expense-list">
+        ${this.#plansMarkup(plans)}
     </ul>
 
     <div class="plan__expense-summary summary">
-        <h3 class = "plan__expense-summary--total">Total Planned 😁</h3>
+    <div class ="plan__expense-total">
+        <h3 class = "plan__expense-summary--total">Total Planned 👉</h3>
         <p> $2000</p>
-        <h3 class ="plan__expense-summary--remaining">Budget Remaining 👇</h3>
+     </div>  
+     <div class ="plan__expense-remaining"> 
+        <h3 class ="plan__expense-summary--remaining">Budget Remaining 👉</h3>
         <p> $5000</p>
+     </div>   
     </div>
 </div>
       
   </div>`;
+  }
+
+  #plansMarkup(plan) {
+    return plan
+      .slice()
+      .reverse()
+      .map(plan => {
+        return `
+       <li class="plan__expense-item expense-item ">
+            <div class = "plan__expense-detail">
+                <h3 class = "plan__expense-detail-heading">${plan.expenseMsg}</h3>
+                <span>${plan.expenseAmount} RS - Due: ${plan.expenseDate}</span>
+            </div>
+            <div class = "plan__expense-btn">
+                <button class = "plan__expense-btn--edit" data-id ="${plan.id}">Edit</button>
+                <button class = "plan__expense-btn--delete" data-id ="${plan.id}" >Delete</button>
+            </div>
+        </li>
+  `;
+      })
+      .join('');
   }
 }
 
