@@ -39,6 +39,7 @@ class PlanView extends View {
     });
   }
   _generateMarkup({ plans, totalPlanned, remainingBalance }) {
+    console.log(totalPlanned, remainingBalance);
     return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">

@@ -63,7 +63,9 @@ const plannedBalance = function () {
       .reduce((acc, num) => acc + num, 0);
 };
 const remainingBalance = function () {
-  return state.account.totalBalance - state.account.totalPlanned;
+  if (state.account.totalPlanned)
+    return state.account.totalBalance - state.account.totalPlanned;
+  else return state.account.totalBalance;
 };
 
 const userTotalBalance = function () {
