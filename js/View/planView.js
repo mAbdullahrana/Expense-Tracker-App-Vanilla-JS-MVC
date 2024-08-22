@@ -99,11 +99,11 @@ class PlanView extends View {
     <div class="plan__expense-summary summary">
     <div class ="plan__expense-total">
         <h3 class = "plan__expense-summary--total">Total Planned 👉</h3>
-        <p> ${totalPlanned} RS</p>
+        <p> ${totalPlanned || 0} RS</p>
      </div>  
      <div class ="plan__expense-remaining"> 
         <h3 class ="plan__expense-summary--remaining">Budget Remaining 👉</h3>
-        <p> ${remainingBalance} RS</p>
+        <p> ${remainingBalance || 0} RS</p>
      </div>   
     </div>
 </div>
