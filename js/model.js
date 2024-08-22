@@ -57,9 +57,10 @@ export const deletePlan = function (id) {
 };
 
 const plannedBalance = function () {
-  return state.account.plans
-    .map(el => el.expenseAmount)
-    .reduce((acc, num) => acc + num, 0);
+  if (state.account.plans.length > 0)
+    return state.account.plans
+      .map(el => el.expenseAmount)
+      .reduce((acc, num) => acc + num, 0);
 };
 const remainingBalance = function () {
   return state.account.totalBalance - state.account.totalPlanned;
