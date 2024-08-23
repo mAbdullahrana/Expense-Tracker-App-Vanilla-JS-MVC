@@ -589,7 +589,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 80vh;
+  height: 75vh;
 }
 .add__plan-header {
   text-align: center;
