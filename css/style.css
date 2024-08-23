@@ -781,7 +781,7 @@ img {
     padding: 0.5rem 0.5rem;
     display: flex;
     flex-direction: row-reverse;
-    flex : 1;
+    flex: 1;
     gap: 0.2rem;
     align-items: center;
     width: 50%;
@@ -795,4 +795,7 @@ img {
   }
 
 
+  .signup__container {
+    max-width: 100%;
+  }
 }
