@@ -46,7 +46,7 @@ const controlDeletePlan = function (id) {
 const controlLogOutHashChange = function () {
   LogOutView.render();
 };
-const init = async function () {
+const init = function () {
   signupView.render(model.state.account);
   signupView.addHandlerUserSignUp(controlUserSignUp);
   loginView.addHandlerUserLogin(controlUserLogin);
