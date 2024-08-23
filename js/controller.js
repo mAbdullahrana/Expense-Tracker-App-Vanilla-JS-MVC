@@ -4,6 +4,7 @@ import signupView from './view/signupView.js';
 import AppView from './View/appView.js';
 import OperationView from './View/operationView.js';
 import PlanView from './View/planView.js';
+import LogOutView from './View/logoutView.js';
 
 const controlUserSignUp = function (userName, pin) {
   model.createNewAccount(userName, pin);
@@ -42,6 +43,9 @@ const controlDeletePlan = function (id) {
   PlanView.render(model.state.account);
 };
 
+const controlLogOutHashChange = function () {
+  LogOutView.render();
+};
 const init = async function () {
   signupView.render(model.state.account);
   signupView.addHandlerUserSignUp(controlUserSignUp);
@@ -53,6 +57,7 @@ const init = async function () {
   PlanView.addHandlerHashChange(controlPlanHashChange);
   PlanView.addHandlerAddPlan(controlAddPlan);
   PlanView.addHandlerDeletePlan(controlDeletePlan);
+  LogOutView.addHandlerHashChange(controlLogOutHashChange);
 };
 
 init();

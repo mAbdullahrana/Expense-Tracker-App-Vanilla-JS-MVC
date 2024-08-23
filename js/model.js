@@ -2,9 +2,7 @@ export const state = {
   account: {
     owner: '',
     movements: [],
-    message: [],
     pin: '',
-    credits: [],
     plans: [],
   },
 };
@@ -21,16 +19,18 @@ export const loginUser = function (userName, pin) {
     : false;
 };
 
-export const addOperation = function (amount, message, operation) {
+export const addOperation = function (money, message, operation) {
   if (operation === 'income') {
-    state.account.movements.push(amount);
-    state.account.message.push(message);
+    state.account.movements.push({
+      amount: money,
+      amountMsg: message,
+    });
+    console.log(state.account);
     calcMoney();
     localStoreData();
   }
   if (operation === 'expense') {
-    state.account.movements.push(-amount);
-    state.account.message.push(message);
+    state.account.movements.push({ amount: -money, amountMsg: message });
     calcMoney();
     localStoreData();
   }
@@ -70,24 +70,25 @@ const remainingBalance = function () {
 
 const userTotalBalance = function () {
   if (state.account.movements.length > 0) {
-    state.account.totalBalance = state.account.movements.reduce(
-      (acc, num) => acc + num,
-      0
-    );
+    state.account.totalBalance = state.account.movements
+      .map(el => el.amount)
+      .reduce((acc, num) => acc + num, 0);
   }
 };
 
 const userIncomes = function () {
   if (state.account.movements.length > 0) {
     state.account.incomes = state.account.movements
+      .map(el => el.amount)
       .filter(num => num > 0)
-      .reduce((acc, num) => acc + num);
+      .reduce((acc, num) => acc + num, 0);
   }
 };
 
 const userExpenses = function () {
   if (state.account.movements.length > 0) {
     state.account.expenses = state.account.movements
+      .map(el => el.amount)
       .filter(num => num < 0)
       .reduce((acc, num) => acc + num, 0);
   }

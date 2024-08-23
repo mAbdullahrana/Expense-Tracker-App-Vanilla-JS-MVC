@@ -39,7 +39,6 @@ class PlanView extends View {
     });
   }
   _generateMarkup({ plans, totalPlanned, remainingBalance }) {
-    console.log(totalPlanned, remainingBalance);
     return `<div class="menu">
       <aside class="side__menu-main">
         <ul class="side__menu-main-list">
@@ -55,17 +54,13 @@ class PlanView extends View {
             <a href="#plans" class="side__menu-main-link">Plans</a
             ><i class="side__menu-icon fa-regular fa-calendar-days"></i>
           </li>
-          <li class="side__menu-main-item">
-            <a href="#history" class="side__menu-main-link">History</a
-            ><i class=" side__menu-icon fa-solid fa-clock-rotate-left"></i>
-          </li> 
         </ul>
       </aside>
 
       <aside class="side__menu-second">
         <ul class="side__menu-second-list">
           <li class="side__menu-second-item">
-            <a href="#logout" class="side__menu-second-link">log Out</a
+            <a href="#login" class="side__menu-second-link">log Out</a
             ><i class="side__menu-icon fa-solid fa-arrow-right-from-bracket"></i>
           </li>
         </ul>

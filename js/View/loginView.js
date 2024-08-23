@@ -1,5 +1,4 @@
 import View from './view.js';
-import * as model from './../model.js';
 
 class LoginView extends View {
   _parent = document.querySelector('.navbar');
