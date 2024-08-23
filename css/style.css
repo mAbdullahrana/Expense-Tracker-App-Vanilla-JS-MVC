@@ -699,7 +699,7 @@ img {
 
 @media (max-width: 768px) {
   .navbar__container {
-    flex-direction: column;
+    display: flex;
     align-items: center;
     border-bottom: solid 2px var(--fourth-color);
   }
@@ -711,10 +711,10 @@ img {
     border-left: solid 2px var(--fourth-color);
   }
   .navbar__logo {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     filter: invert(100%) brightness(91%);
-    margin-left: 0.8rem;
+    margin: 0.5rem;
   }
 
   .navbar__welcome {
@@ -733,12 +733,13 @@ img {
     font-size: 1rem;
     font-family: inherit;
     text-align: center;
-    width: 70px;
-    border-radius: 10rem;
+    width: 55px;
+    border-radius: 5rem;
     color: var(--primary-color);
     border: 1px solid var(--third-color);
     transition: all 0.3s;
     background-color: #3e3c50;
+    margin: 0 0.2rem;
   }
 
   .login__btn {
@@ -748,7 +749,7 @@ img {
     color: var(--secondary-color);
     cursor: pointer;
     transition: all 0.3s;
-    margin-left: 1rem;
+    margin-left: 0.1rem;
   }
 
   .app {
