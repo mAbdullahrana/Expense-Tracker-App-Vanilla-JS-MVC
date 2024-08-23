@@ -718,7 +718,8 @@ img {
   }
 
   .navbar__welcome {
-    font-size: 0.9rem;
+    display: block;
+    font-size: 1.2rem;
     font-weight: 400;
   }
 
@@ -733,13 +734,13 @@ img {
     font-size: 1rem;
     font-family: inherit;
     text-align: center;
-    width: 3.1rem;
+    width: 60px;
     border-radius: 5rem;
     color: var(--primary-color);
     border: 1px solid var(--third-color);
     transition: all 0.3s;
     background-color: #3e3c50;
-    margin: 0 0.2rem;
+    margin: 0.4rem 0.2rem;
   }
 
   .login__btn {
@@ -798,4 +799,23 @@ img {
   .signup__container {
     max-width: 100%;
   }
+
+  .signup__form-input--name::placeholder,
+.signup__form-input--password::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.4;
+  font-size: 0.8rem;
+}
+
+.box {
+  flex-direction: column;
+}
+
+
+.plan__expense-remaining,
+.plan__expense-total {
+  display: flex;
+  flex-direction: column;
+}
+
 }

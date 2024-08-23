@@ -22,7 +22,7 @@ class AppView extends View {
           <li class="side__menu-main-item">
             <a href="#plans" class="side__menu-main-link">Plans</a
             ><i class="side__menu-icon fa-regular fa-calendar-days"></i>
-          </li> 
+          </li>
         </ul>
       </aside>
 
