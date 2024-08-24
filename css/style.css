@@ -795,43 +795,53 @@ img {
     padding: 1rem 2rem;
   }
 
-
   .signup__container {
     max-width: 100%;
   }
 
   .signup__form-input--name::placeholder,
-.signup__form-input--password::placeholder {
-  color: var(--secondary-color);
-  opacity: 0.4;
-  font-size: 0.8rem;
-}
+  .signup__form-input--password::placeholder {
+    color: var(--secondary-color);
+    opacity: 0.4;
+    font-size: 0.8rem;
+  }
 
-.box {
-  flex-direction: column;
-}
+  .box {
+    flex-direction: column;
+  }
 
+  .plan__expense-remaining,
+  .plan__expense-total {
+    display: flex;
+    flex-direction: column;
+  }
 
-.plan__expense-remaining,
-.plan__expense-total {
-  display: flex;
-  flex-direction: column;
-}
+  .primary-heading {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 2rem;
+    border-bottom: var(--fifth-color);
+  }
 
-.primary-heading {
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding: 2rem;
-  border-bottom: var(--fifth-color);
-}
+  .primary-btn {
+    font-size: 1rem;
+  }
+  .secondary-btn {
+    font-size: 1rem;
+  }
 
-.primary-btn {
-  font-size: 1rem;
- 
-}
-.secondary-btn {
-  font-size: 1rem;
-}
-
-
+  .signup__form-submit-button {
+    border: none;
+    background: none;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #29263d;
+    padding: 0.5rem 5.5rem;
+    font-family: inherit;
+    border-radius: 2rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
 }

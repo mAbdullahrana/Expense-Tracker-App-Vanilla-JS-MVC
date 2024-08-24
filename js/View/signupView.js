@@ -24,9 +24,9 @@ class SignUpView extends View {
   }
 
   _generateMarkup(data) {
-    return data.owner === ''
-      ? `
-    ${this._parent.classList.remove('hidden')}
+    if (data.owner === '') {
+      this._parent.classList.remove('hidden');
+      return `
     <div class="signup">
         <div class="signup__container">
           <div class="signup__content">
@@ -65,8 +65,11 @@ class SignUpView extends View {
             </div>
           </div>
         </div>
-      </div>`
-      : '';
+      </div>
+       `;
+    } else {
+      return '';
+    }
   }
 }
 
