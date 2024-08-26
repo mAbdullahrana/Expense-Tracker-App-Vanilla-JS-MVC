@@ -19,6 +19,7 @@ class SignUpView extends View {
         if (userName === '' || userPin === '') return;
         handler(userName, userPin);
         this._parent.classList.add('hidden');
+        document.querySelector('.navbar').classList.remove('hidden')
       }.bind(this)
     );
   }
@@ -26,6 +27,7 @@ class SignUpView extends View {
   _generateMarkup(data) {
     if (data.owner === '') {
       this._parent.classList.remove('hidden');
+      document.querySelector('.navbar').classList.add('hidden');
       return `
     <div class="signup">
         <div class="signup__container">
@@ -39,12 +41,12 @@ class SignUpView extends View {
             <div class="signup__form">
               <div class="signup__form signup__form-input">
                 <label for="name" class="signup__form-label--name"
-                  >Full name*</label
+                  >User name*</label
                 >
                 <input
                   type="text"
                   class="signup__form-input--name"
-                  placeholder="Enter Your Full Name"
+                  placeholder="Enter Your User Name"
                   required
                 />
                 <label for="name" class="signup__form-label--password"
